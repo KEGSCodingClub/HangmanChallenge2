@@ -1,0 +1,41 @@
+
+Easy:
+
+create variables for the word, the hidden word and the number of incorrect guesses
+create an input where the user is asked to guess a letter, and the letter is stored
+you can use a while loop to make sure that the user is always asked to guess another letter until the word is finished/incorrect guesses reached
+
+iterate through the word(for i in range) and check if the letter is correct by using word[i]==letter
+strings in python are immutable, meaning you cant do hiddenword[i]=letter to replace a hyphen/dash
+A good way to approach this problem is to use hiddenword as a list, which is mutable, and then convert it to a string when displaying the hidden word to the user
+you can convert a list to a string by iterating through the list, and adding each item to a string which starts of empty, e.g. string+=item
+
+You will need to break the loop either if the word has been completed, or if the user has made 7 incorrect guesses.
+A function can be ended by typing return  and a loop can be broken by typing break
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Medium:
+
+the best way to implement the ASCII art would be to have all of the ASCII drawings in a list.
+Conveniently there are eight drawings, and so they would work for 0-7 incorrect guesses.
+Using print(list[incorrectguesses]) will then give you the right one
+
+In order to have dashes and spaces in the hidden list, the easiest way is to use the method above in the easy section with the hidden word as a list 
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Hard:
+
+this part of the challenge will only work if run from the computer terminal.
+
+the command sys.stdout.write("\033[F")  will move the printing cursor to the previous line
+the command sys.stdout.write("\033[K")  will then clear the rest of the line
+this will allow you to overwrite all previous text if you use the commands a certain number of times, and have your print statements in the right order
+
+in order to use these commands, paste these lines into the start of your code:
+
+import sys
+import ctypes
+kernel32 = ctypes.windll.kernel32
+kernel32.SetConsoleMode(kernel32.GetStdHandle(-11), 7)
+
+this method only works for windows 10 i believe. There are very similar solutions but with different syntax for other OSs
